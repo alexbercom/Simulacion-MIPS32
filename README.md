@@ -41,34 +41,35 @@ El programa cargará instrucciones y datos iniciales desde archivos de texto y s
 ## 🏗️ Estructura del Proyecto
 ```bash
 .
-├── ALU/      
-│   ├── ALU.py                  # Implementación de la ALU (suma, resta, AND, OR, etc.)
-├── CPU/                        # Componentes principales del procesador
-│   ├── CPU.py                  # Clase principal de la CPU
-│   ├── UnidadControl.py        # Control del pipeline
-│   ├── UnidadProcesamiento.py  # Procesamiento del pipeline
-│   └── Segmentacion.py         # Gestión del flujo segmentado
-├── Fases/                      # Clases para las fases del pipeline
-│   ├── IF.py                   # Instruction Fetch
-│   ├── ID.py                   # Instruction Decode
-│   ├── EX.py                   # Execute
-│   ├── MEM.py                  # Memory Access
-│   └── WB.py                   # Write Back
-├── Memoria/                    # Memorias y registros
-│   ├── Memoria.py              # Clase base de memoria
-│   ├── MemoriaDatos.py         # Memoria de datos
-│   ├── MemoriaInstrucciones.py # Memoria de instrucciones
-│   └── Registros.py            # Banco de registros
-├── RegistrosAcoplamiento/      # Registros intermedios del pipeline
+├── 📂 ALU/      
+│   ├── ALU.py                        # Implementación de la ALU (suma, resta, AND, OR, etc.)
+├── 📂 CPU/                       # Componentes principales del procesador
+│   ├── CPU.py                        # Clase principal de la CPU
+│   ├── UnidadControl.py              # Control del pipeline
+│   ├── UnidadProcesamiento.py        # Procesamiento del pipeline
+│   └── Segmentacion.py               # Gestión del flujo segmentado
+├── 📂 Fases/                     # Clases para las fases del pipeline
+│   ├── IF.py                         # Instruction Fetch
+│   ├── ID.py                         # Instruction Decode
+│   ├── EX.py                         # Execute
+│   ├── MEM.py                        # Memory Access
+│   └── WB.py                         # Write Back
+├── 📂 Memoria/                   # Memorias y registros
+│   ├── Memoria.py                    # Clase base de memoria
+│   ├── MemoriaDatos.py               # Memoria de datos
+│   ├── MemoriaInstrucciones.py       # Memoria de instrucciones
+│   └── Registros.py                  # Banco de registros
+├── 📂 RegistrosAcoplamiento/     # Registros intermedios del pipeline
 │   ├── IF_ID.py
 │   ├── ID_EX.py
 │   ├── EX_MEM.py
 │   └── MEM_WB.py
-├── PC/     
-│   ├── PC.py                   # Program Counter
-├── instrucciones.txt           # Instrucciones de entrada
-├── datos.txt                   # Datos iniciales en memoria (opcional)
-└── main.py                     # Punto de entrada del programa
+├── 📂 PC/     
+│   ├── PC.py                         # Program Counter
+├── instrucciones.txt              # Instrucciones de entrada
+├── datos.txt                      # Datos iniciales en memoria (opcional)
+├── main.py                        # Punto de entrada del programa
+└── README.md
 ```
 
 ## ⚙️ Funcionamiento del Programa
