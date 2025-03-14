@@ -1,0 +1,41 @@
+# ---- Instrucciones de carga de datos ----
+LW  t1 4(t0)        # t1 = Mem[t0 + 4]                                                                                                      (dir 0)
+LW  t2 4(t0)        # t2 = Mem[t0 + 4]                                                                                                      (dir 4)
+LW  t4 8(t0)        # t4 = Mem[t0 + 8]                                                                                                      (dir 8)
+LW  t5 12(t0)       # t5 = Mem[t0 + 12]                                                                                                     (dir 12)
+LW  t8 16(t0)       # t8 = Mem[t0 + 16]                                                                                                     (dir 16)
+LW  t9 20(t0)       # t9 = Mem[t0 + 20]                                                                                                     (dir 20)
+
+# ---- Instrucciones aritmético-lógicas ----
+ADD t3 t1 t2        # t3 = t1 + t2                                                                                                          (dir 24)
+SUB t6 t4 t5        # t6 = t4 - t5                                                                                                          (dir 28)
+AND t7 t1 t2        # t7 = t1 AND t2                                                                                                        (dir 32)
+OR  s0 t1 t2        # s0 = t1 OR  t2                                                                                                        (dir 36)
+XOR s1 t1 t2        # s1 = t1 XOR t2                                                                                                        (dir 40)
+SLT s2 t1 t3        # s2 = (t1 < t3) ? 1 : 0                                                                                                (dir 44)
+NOR s3 t1 t2        # s3 = ~(t1 OR t2)                                                                                                      (dir 48)
+ADD t0 t1 t2        # t0 = t1 + t2                                                                                                          (dir 52)
+
+# ---- Instrucciones de guardado de datos y de salto ----
+BEQ t1 t2 24        # if (t1 == t2) PC = PC + 24  (salto hacia adelante, si se cumple, salta a BNE)                                         (dir 56)
+SW  t6 0(t0)        # Mem[t0 + 0] = t6                                                                                                      (dir 60)
+    # Esto funcionaría como un else, ya que si se cumple BEQ, salta a la posición 80, y si no, llega a J 96 y SW t7
+    J 96                # Salto incondicional a dirección 96 (salto al ADD en PC=96)                                                        (dir 64)
+    SW  t7 4(t0)        # Mem[t0 + 4] = t7                                                                                                  (dir 68)
+
+# Esto se ejecuta si se cumple las condiciones de BEQ y BNE, haciendose un salto aquí (si no se cumple alguna, se ejecuta J 96)
+J 108               # Salto incondicional a dirección 108 (fin de las instrucciones)                                                        (dir 72)
+ADD s4 t6 t8        # s4 = t6 + t8                                                                                                          (dir 76)
+
+BNE t4 t5 -8        # if (t4 != t5) PC = PC - 8   (salto hacia atrás, si se cumple, salta a J 108 en PC=72)                                 (dir 80)
+SW  t8 8(t0)        # Mem[t0 + 8] = t8                                                                                                      (dir 84)
+    # Esto funcionaría como un else, ya que si se cumple BNE, salta a la posición 72, y si no, llega a J 96 y SW t9
+    J 96                # Salto incondicional a dirección 96 (salto al ADD en PC=96)                                                        (dir 88)
+    SW  t9 12(t0)       # Mem[t0 + 12] = t9                                                                                                 (dir 92)
+
+# Esto se ejecuta si alguna de las dos condiciones no se ha cumplido, si se han cumplido, va directamente a fin de instrucciones
+ADD t6 t6 t7        # t6 = t6 + t7                                                                                                          (dir 96)
+ADD t8 t8 t9        # t8 = t8 + t9                                                                                                          (dir 100)
+ADD s4 t6 t8        # s4 = t6 + t8                                                                                                          (dir 104)
+
+# ---- Fin de las instrucciones ----                                                                                                        (dir 108)
